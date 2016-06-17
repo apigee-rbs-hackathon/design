@@ -1,7 +1,7 @@
 #copy into https://www.websequencediagrams.com/ to view
 title RBS Hackathon
 
-participant Mobile App as a
+participant Generic Client as a
 participant Apigee as ap
 participant BaasaS b
 participant BlueBank API as bl
