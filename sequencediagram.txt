@@ -1,0 +1,49 @@
+#copy into https://www.websequencediagrams.com/ to view
+title RBS Hackathon
+
+participant Mobile App as a
+participant Apigee as ap
+participant BaaS as b
+participant BlueBank API as bl
+
+note left of a:
+Register
+end note
+
+note left of a: 
+Log In
+end note
+
+note left of a: 
+Create Virtual Accounts and Set Limits
+end note
+
+note left of a: 
+Configure Tags
+end note
+
+note left of a: 
+Modify Tags
+end note
+
+note left of a: 
+Make a purchase associated to a tag (within limit)
+end note
+
+note left of a: 
+Make a purchase not associated to a tag  (within limit)
+end note
+
+note left of a: 
+Make a purchase associated to a tag  (outside limit)
+end note
+
+note left of a: 
+Make a purchase not associated to a tag  (outside limit)
+end note
+
+note left of a: 
+Logout
+end note
+
+
