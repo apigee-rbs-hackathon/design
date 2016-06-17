@@ -19,7 +19,6 @@ b->ap: 201 Created
 end
 
 ap->a: 200 OK
-
 note left of a: 
 Log In
 end note
@@ -30,7 +29,12 @@ ap->ap: validate client credentials
 ap->b: get user credentials
 b->ap: 200 OK
 ap->ap: validate user credentials
-ap->a: 200 OK + Bearer Token
+ap->bl: get list accounts
+note left of bl: cache account list
+bl->ap: return single account
+ap->ap: generate JWT
+ap->a: 200 OK + Tokens
+
 else invalid credentials
 ap->a: 401 Unauthoried
 end
@@ -39,13 +43,14 @@ note left of a:
 Create Virtual Accounts and Set Limits
 end note
 
+a->ap: POST /accounts/{rbs account id}/vaccounts/
 note left of a: 
-Configure Tags
+tag: groceries
+limit: £100 (finite)
+receiver: Lidl
 end note
+b->ap: 201 Created
 
-note left of a: 
-Modify Tags
-end note
 
 note left of a: 
 Make a purchase associated to a tag (within limit)
