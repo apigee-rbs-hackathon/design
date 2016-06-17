@@ -3,16 +3,37 @@ title RBS Hackathon
 
 participant Mobile App as a
 participant Apigee as ap
-participant BaaS as b
+participant BaasaS b
 participant BlueBank API as bl
 
 note left of a:
 Register
 end note
+a-> ap: POST /register
+ap->bl: validate user exists in BlueBank
+alt false
+b->ap: 400
+else true
+ap->b: Create User
+b->ap: 201 Created
+end
+
+ap->a: 200 OK
 
 note left of a: 
 Log In
 end note
+
+a->ap: /token (password grant type)
+alt valid credentials
+ap->ap: validate client credentials
+ap->b: get user credentials
+b->ap: 200 OK
+ap->ap: validate user credentials
+ap->a: 200 OK + Bearer Token
+else invalid credentials
+ap->a: 401 Unauthoried
+end
 
 note left of a: 
 Create Virtual Accounts and Set Limits
